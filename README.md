@@ -4,14 +4,14 @@ An enhancement for mkvirtualenv and django projects
 
 Performs the command `mkvirtualenv ENV_NAME`, but also:
 
-*   sets the directory to `cd` to when the virtualenv is activated
+*   sets the directory to jump to when the virtualenv is activated
 *   sets the PYTHONPATH and DJANGO_SETTINGS_MODULE in the postactivate hook
-*   auto-installs from a requirements.txt file
-*   auto-inits git submodules
+*   auto-installs dependencies if there is a requirements.txt file
+*   auto-inits git submodules if there are any
 
-Run this after pulling down a django project from git, and you’ll save yourself from a bunch of redundant busywork.
+This is intended to save environment setup busywork after pulling down a django project from github.
 
-*This does not run django-admin.py startproject, instead it is for configuring the environment for an existing django project.* If you are looking for a way to create an empty django project with virtualenvwrapper, check out the [virtualenvwrapper.django template plugin for virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper.django/).
+*This does not run django-admin.py startproject, instead it is for configuring the environment for an existing django project. If you are looking for a way to create an empty django project with virtualenvwrapper, check out the [virtualenvwrapper.django template plugin for virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper.django/).*
 
 
 ### Usage
