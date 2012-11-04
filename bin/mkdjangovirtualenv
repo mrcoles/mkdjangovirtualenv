@@ -126,6 +126,12 @@ fi
 
 
 ## print out results
+
+echo "------------------------------------------------------------"
+echo "- Success                                                  -"
+echo "------------------------------------------------------------"
+echo
+
 _tpath=~/.virtualenvs/$_env_name/.project
 echo
 echo "##"
