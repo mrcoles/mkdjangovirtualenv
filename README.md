@@ -33,3 +33,10 @@ This is intended to save environment setup busywork after pulling down a django 
 
         Provide a path to the root of the project. May be a
         relative path, defaults the current working directory.
+
+
+### Installation
+
+This will place the the `mkdjangovirtualenv` in a bin directory so it can be used on your path (and as a result, it will most likely require sudo):
+
+    sudo pip install mkdjangovirtualenv
