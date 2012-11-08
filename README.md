@@ -17,7 +17,7 @@ This is intended to save environment setup busywork after pulling down a django 
 Usage
 -----
 
-    source mkdjangovirtualenv [--settings DJANGO_SETTINGS_MODULE] ENV_NAME [PROJECT_DIRECTORY]
+    mkdjangovirtualenv [--settings DJANGO_SETTINGS_MODULE] ENV_NAME [PROJECT_DIRECTORY]
 
 
 Options
