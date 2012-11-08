@@ -45,7 +45,7 @@ Installation
 
 This will pull down the latest copy of the scripts from PYPI and place them in your path. You can then run the `mkdjangovirtualenv` script directly.
 
-Or for a better expierence, source the `mkdjangovirtualenv.sh` file just after your source `virtualenvwrapper.sh` in your startup scripts. For example, my `~/.bash_profile` has:
+For the best expierence, source the `mkdjangovirtualenv.sh` file just after your source `virtualenvwrapper.sh` in your startup scripts. For example, my `~/.bash_profile` has:
 
     # virtualenv
     export WORKON_HOME=$HOME/.virtualenvs
