@@ -30,31 +30,6 @@ die () {
     exit 1
 }
 
-
-## make sure we're not in another virtualenv
-deactivate > /dev/null 2>&1
-
-
-## load virtualenvwrapper in case this wasn't called via `source`
-if [ "`type -t mkvirtualenv`" != function ]; then
-    _wrapper_locations="
-/usr/local/share/python/virtualenvwrapper.sh
-/usr/local/bin/virtualenvwrapper.sh
-/usr/bin/virtualenvwrapper.sh"
-    _wrapper_success=
-    for f in $_wrapper_locations; do
-        if [ -e "$f" ]; then
-            source $f && _wrapper_success=1
-            break
-        fi
-    done
-    if [ ! $_wrapper_success ]; then
-        die "Unable to find virtualenvwrapper.sh in the standard locations:\
-            ${_wrapper_locations}";
-    fi
-fi
-
-
 ## parse args
 until [ -z "$1" ]; do
     case $1 in
@@ -84,6 +59,32 @@ done
 
 if [ ! $_collect_path ]; then _collect_path=`pwd`; fi
 if [ ! $_env_name ]; then die "You must specify the name of your environment."; fi
+
+
+## make sure we're not in another virtualenv
+deactivate > /dev/null 2>&1
+
+
+## load virtualenvwrapper if we don't have access to it
+if [ "`type -t mkvirtualenv`" != function ]; then
+    _wrapper_locations="
+/usr/local/share/python/virtualenvwrapper.sh
+/usr/local/bin/virtualenvwrapper.sh
+/usr/bin/virtualenvwrapper.sh"
+    _wrapper_success=
+    for f in $_wrapper_locations; do
+        if [ -e "$f" ]; then
+            source $f || die "
+[ERROR] running virtualenvwrapper.sh -- if you have a virtualenv enabled, run the \`deactivate\` command before calling this script."
+            _wrapper_success=1
+            break
+        fi
+    done
+    if [ ! $_wrapper_success ]; then
+        die "Unable to find virtualenvwrapper.sh in the standard locations:\
+            ${_wrapper_locations}"
+    fi
+fi
 
 
 ## start from the proper directory
