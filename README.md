@@ -47,7 +47,6 @@ This will pull down the latest copy of the scripts from PYPI and place them in y
 
 For the best expierence, source the `mkdjangovirtualenv.sh` file just after your source `virtualenvwrapper.sh` in your startup scripts. For example, my `~/.bash_profile` has:
 
-    # virtualenv
     export WORKON_HOME=$HOME/.virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh
     source /usr/local/bin/mkdjangovirtualenv.sh
