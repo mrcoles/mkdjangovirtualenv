@@ -1,20 +1,25 @@
 #!/usr/bin/env bash
 
 #
-# Make a virtualenv specifically for a django project using virtualenvwrapper
+# A function to create and custom tailor a virtualenv for an
+# existing Django project (using virtualenvwrapper)
 #
-# *   Set the project directory in the .project file
 # *   Set the DJANGO_SETTINGS_MODULE and PYTHONPATH in postactivate
+# *   Set the project directory in the .project file
 # *   Install pip requirements if there's a requirements.txt file
 # *   Install git submodules if a git repo with submodules
 #
-
+# Source this file or copy it into a startup script, and see usage
+# info by running `mkdjangovirtualenv -h`
+#
+# Alternatively, `pip install mkdjangovirtualenv` and use:
+# `mkdjangovirtualenv`
+#
 
 function mkdjangovirtualenv {
     _settings='project.settings'
     _env_name=
     _collect_path=
-
 
     die () {
         if [ $# != 0 ]; then
