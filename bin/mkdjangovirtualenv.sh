@@ -20,6 +20,10 @@ function mkdjangovirtualenv {
     _settings='project.settings'
     _env_name=
     _collect_path=
+    _workon_home="$WORKON_HOME";
+    if [ "$_workon_home" = "" ]; then
+        _workon_home="~/.virtualenvs"
+    fi
 
     die () {
         if [ $# != 0 ]; then
@@ -107,8 +111,8 @@ function mkdjangovirtualenv {
 
     ## set DJANGO_SETTINGS_MODULE and PYTHONPATH in postactivate
     echo "export DJANGO_SETTINGS_MODULE=\"${_settings}\"
-export PYTHONPATH=`pwd`" >> ~/.virtualenvs/$_env_name/bin/postactivate
-    source ~/.virtualenvs/$_env_name/bin/postactivate
+export PYTHONPATH=`pwd`" >> $_workon_home/$_env_name/bin/postactivate
+    source $_workon_home/$_env_name/bin/postactivate
 
 
     ## try to install requirements - separate from [-r requirements_file]
@@ -139,7 +143,7 @@ export PYTHONPATH=`pwd`" >> ~/.virtualenvs/$_env_name/bin/postactivate
     echo "------------------------------------------------------------"
     echo
 
-    _tpath=~/.virtualenvs/$_env_name/.project
+    _tpath=$_workon_home/$_env_name/.project
     echo
     echo "##"
     echo "## new project path (${_tpath}):"
@@ -147,7 +151,7 @@ export PYTHONPATH=`pwd`" >> ~/.virtualenvs/$_env_name/bin/postactivate
     echo
     cat $_tpath
 
-    _tpath=~/.virtualenvs/$_env_name/bin/postactivate
+    _tpath=$_workon_home/$_env_name/bin/postactivate
     echo
     echo "##"
     echo "## postactivate script (${_tpath}):"

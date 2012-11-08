@@ -4,3 +4,4 @@ LICENSE.txt
 README.md
 setup.py
 bin/mkdjangovirtualenv
+bin/mkdjangovirtualenv.sh

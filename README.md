@@ -41,8 +41,15 @@ Options
 Installation
 ------------
 
-Include mkdjangovirtualenv.sh in a startup script so you can use its `mkdjangovirtualenv` function directly.
-
-Or, you can install from pypi, which will place the `mkdjangovirtualenv` script in a bin directory so it can be used on your path (and as a result, it will most likely require sudo):
-
     sudo pip install mkdjangovirtualenv
+
+This will pull down the latest copy of the scripts from PYPI and place them in your path. You can then run the `mkdjangovirtualenv` script directly.
+
+Or for a better expierence, source the `mkdjangovirtualenv.sh` file just after your source `virtualenvwrapper.sh` in your startup scripts. For example, my `~/.bash_profile` has:
+
+    # virtualenv
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/local/bin/mkdjangovirtualenv.sh
+
+The benefit of this approach is that it makes it a bash function instead of a script, so it will actually activate the new virualenv for you, whereas the script would have needed to be run with `source` to have the same affect.
