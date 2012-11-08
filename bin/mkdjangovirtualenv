@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+#
+# A convenience script for the bash function `mkdjangovirtualenv`
+# found in mkdjangovirtualenv.sh
+#
+
+source mkdjangovirtualenv.sh &&
+mkdjangovirtualenv $@

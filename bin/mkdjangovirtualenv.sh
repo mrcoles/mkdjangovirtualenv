@@ -9,11 +9,11 @@
 # *   Install pip requirements if there's a requirements.txt file
 # *   Install git submodules if a git repo with submodules
 #
-# Source this file or copy it into a startup script, and see usage
-# info by running `mkdjangovirtualenv -h`
+# Source this file or copy it into a startup script, and
+# see usage info by running `mkdjangovirtualenv -h`
 #
 # Alternatively, `pip install mkdjangovirtualenv` and use:
-# `mkdjangovirtualenv`
+# `mkdjangovirtualenv` in the same way.
 #
 
 function mkdjangovirtualenv {
@@ -72,7 +72,7 @@ function mkdjangovirtualenv {
     deactivate > /dev/null 2>&1
 
 
-    ## load virtualenvwrapper if we don't have access to it
+    ## try to load virtualenvwrapper if we don't have access to it
     if [ "`type -t mkvirtualenv`" != function ]; then
         _wrapper_locations="
 /usr/local/share/python/virtualenvwrapper.sh
@@ -163,5 +163,3 @@ export PYTHONPATH=`pwd`" >> ~/.virtualenvs/$_env_name/bin/postactivate
     echo "workon ${_env_name}"
     echo
 }
-
-mkdjangovirtualenv $@
