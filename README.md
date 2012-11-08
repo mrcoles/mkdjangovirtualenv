@@ -1,4 +1,4 @@
-
+===================================================
 An enhancement for mkvirtualenv and django projects
 ===================================================
 
@@ -14,11 +14,14 @@ This is intended to save environment setup busywork after pulling down a django 
 *This does not run django-admin.py startproject, instead it is for configuring the environment for an existing django project. If you are looking for a way to create an empty django project with virtualenvwrapper, check out the [virtualenvwrapper.django template plugin for virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper.django/).*
 
 
-### Usage
+Usage
+-----
 
     source mkdjangovirtualenv [--settings DJANGO_SETTINGS_MODULE] ENV_NAME [PROJECT_DIRECTORY]
 
-### Options
+
+Options
+-------
 
     --settings DJANGO_SETTINGS_MODULE
 
@@ -35,8 +38,11 @@ This is intended to save environment setup busywork after pulling down a django 
         relative path, defaults the current working directory.
 
 
-### Installation
+Installation
+------------
 
-This will place the the `mkdjangovirtualenv` in a bin directory so it can be used on your path (and as a result, it will most likely require sudo):
+Include mkdjangovirtualenv.sh in a startup script so you can use its `mkdjangovirtualenv` function directly.
+
+Or, you can install from pypi, which will place the `mkdjangovirtualenv` script in a bin directory so it can be used on your path (and as a result, it will most likely require sudo):
 
     sudo pip install mkdjangovirtualenv
