@@ -30,7 +30,7 @@ function mkdjangovirtualenv {
             echo >&2 "$@"
             echo
         fi
-        echo "Usage: source `basename $0` [--settings DJANGO__settings_MODULE]"\
+        echo "Usage: source mkdjangovirtualenv [--settings DJANGO__settings_MODULE]"\
          "ENV_NAME [PROJECT_DIRECTORY]"
         echo
         echo " --settings DJANGO_SETTINGS_MODULE"
