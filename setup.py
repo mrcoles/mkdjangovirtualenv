@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='mkdjangovirtualenv',
-    version='0.0.5',
+    version='0.0.6',
     description='A django-specific enhancement to virtualenvwrapper\'s mkvirtualenv function to setup the settings and pythonpath variables, auto-install requirements, set the project path, and install git modules if possible.',
     author='Peter Coles',
     author_email='peter@mrcoles.com',

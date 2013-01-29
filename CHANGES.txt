@@ -1,5 +1,7 @@
 
-v0.0.5, 2013-01-28 -- fixed cras from basename call
+v0.0.6, 2013-01-28 -- got rid of exit calls so sourcing works during errors
+
+v0.0.5, 2013-01-28 -- fixed error in basename call
 
 v0.0.4, 2012-11-08 -- no code changes, just trying to get README.md to work with PYPI
 
