@@ -38,7 +38,7 @@ function mkdjangovirtualenv {
         echo "    Provide a python import path for the settings file."
         echo "    Defaults to ${_settings}"
         echo
-        exit 1
+        return 0
     }
 
     ## parse args
@@ -49,10 +49,10 @@ function mkdjangovirtualenv {
                 _settings=$1
                 ;;
             --help|-h )
-                die
+                die && return 1
                 ;;
             -* )
-                die "Unrecognized option: $1"
+                die "Unrecognized option: $1" && return 1
                 ;;
             * )
                 if [ ! $_env_name ]; then
@@ -60,7 +60,7 @@ function mkdjangovirtualenv {
                 elif [ ! $_collect_path ]; then
                     _collect_path=$1
                 else
-                    die "Invalid number of arguments."
+                    die "Invalid number of arguments." && return 1
                 fi
                 ;;
         esac
@@ -69,7 +69,9 @@ function mkdjangovirtualenv {
     done
 
     if [ ! $_collect_path ]; then _collect_path=`pwd`; fi
-    if [ ! $_env_name ]; then die "You must specify the name of your environment."; fi
+    if [ ! $_env_name ]; then
+        die "You must specify the name of your environment." && return 1
+    fi
 
 
     ## make sure we're not in another virtualenv
@@ -86,14 +88,14 @@ function mkdjangovirtualenv {
         for f in $_wrapper_locations; do
             if [ -e "$f" ]; then
                 source $f || die "
-[ERROR] running virtualenvwrapper.sh -- if you have a virtualenv enabled, run the \`deactivate\` command before calling this script."
+[ERROR] running virtualenvwrapper.sh -- if you have a virtualenv enabled, run the \`deactivate\` command before calling this script." && return 1
                 _wrapper_success=1
                 break
             fi
         done
         if [ ! $_wrapper_success ]; then
             die "Unable to find virtualenvwrapper.sh in the standard locations:\
-            ${_wrapper_locations}"
+            ${_wrapper_locations}" && return 1
         fi
     fi
 
@@ -106,7 +108,7 @@ function mkdjangovirtualenv {
     echo
     echo "## setting up virtualenv: ${_env_name}"
     echo
-    mkvirtualenv -a `pwd` $_env_name || die "Unable to create virtualenv with name ${_env_name}"
+    mkvirtualenv -a `pwd` $_env_name || die "Unable to create virtualenv with name ${_env_name}" && return 1
 
 
     ## set DJANGO_SETTINGS_MODULE and PYTHONPATH in postactivate
@@ -166,4 +168,6 @@ export PYTHONPATH=`pwd`" >> $_workon_home/$_env_name/bin/postactivate
     echo
     echo "workon ${_env_name}"
     echo
+
+    return 0
 }
